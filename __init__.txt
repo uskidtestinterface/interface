@@ -1,0 +1,9 @@
+*** Settings ***
+Library           urllib2
+Library           requests
+Library           json
+Library           RequestsLibrary
+Library           Collections
+Library           Selenium2Library
+Library           String
+Library           DatabaseLibrary

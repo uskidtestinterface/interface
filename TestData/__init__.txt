@@ -1,0 +1,2 @@
+*** Variables ***
+${能力测评DNS}        http://student.uskid.tech/s

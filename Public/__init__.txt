@@ -1,0 +1,11 @@
+*** Settings ***
+Library           requests
+Library           json
+Library           RequestsLibrary
+Library           collections
+Library           urllib2
+Library           Selenium2Library
+Library           HttpLibrary.HTTP
+Library           String
+Resource          Variables/URL.robot
+Resource          Params/params.robot
