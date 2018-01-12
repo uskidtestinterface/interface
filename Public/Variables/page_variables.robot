@@ -15,3 +15,4 @@ ${paramvalue1}    2018-01-12    # 20180112
 ${url}            ${EMPTY}
 ${paramkey2}      ${EMPTY}
 ${paramvalue2}    ${EMPTY}
+${getresp}        ${EMPTY}

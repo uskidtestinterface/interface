@@ -28,4 +28,12 @@ Token
     [Return]    ${Tokenvalue}
 
 Getapi
-    RequestsLibrary.Get request    url    ${获取近30天课程信息api}
+    url    ${获取近30天课程信息api}    ${paramkey1}    ${paramvalue1}    ${Tokenkey}    ${Tokenvalue}
+    ${aaa}    RequestsLibrary.Get Request    api    ${url}
+    Log    ${aaa.content}
+    set global variable    ${getresp}    ${aaa.content}
+    [Return]    ${getresp}
+
+Delapi
+    requestsLibrary.Delete    api    ${教师添加预约api}
+    Log    删除预约成功
