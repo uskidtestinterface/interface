@@ -9,9 +9,9 @@ Library           urllib2
 Library           Selenium2Library
 Library           HttpLibrary.HTTP
 Library           String
-Resource          ../Public/keywords/Public_Variables.robot
 Resource          ../Public/ConnectDatabase/ConnectDatabase.robot
 Library           RequestsLibrary
+Resource          ../Public/keywords/Public_Variables.robot
 
 *** Test Cases ***
 Before
@@ -21,11 +21,3 @@ Before
 教师添加预约
     Postapi    ${startTime}    ${startTimevalue}    ${oneDay}    ${oneDayvalue}    ${教师添加预约api}    ${Tokenkey}
     ...    ${Tokenvalue}
-
-Database
-    ConnectDatabase
-
-Get
-    url    ${获取近30天课程信息api}    ${paramkey1}    ${paramvalue1}    ${Tokenkey}    ${Tokenvalue}
-    ${aaa}    RequestsLibrary.Get Request    api    ${url}
-    Log    ${aaa.content}
