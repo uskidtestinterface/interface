@@ -1,5 +1,6 @@
 *** Settings ***
 Resource          ../Variables/URL.robot
+Resource          ../Variables/datafromuskid.robot
 
 *** Keywords ***
 url
@@ -15,3 +16,20 @@ url
     set global variable    ${url}    ${url8}
     Log    ${url}
     [Return]    ${url}
+
+三段式url
+    [Documentation]    /:id,表示teacher_timeslot表中的teacherid字段
+    ${url1}    catenate    SEPARATOR=    ${api}    ${获取教师预约课数api}
+    ${url2}    catenate    SEPARATOR=    ${url1}    /:
+    ${url3}    catenate    SEPARATOR=    ${url2}    ${teacherId}
+    ${url4}    catenate    SEPARATOR=    ${url3}    ${获取教师预约课数_end}
+    ${url5}    catenate    SEPARATOR=    ${url4}    &
+    set global variable    ${url}    ${url5}
+    Log    ${url}
+
+冒号结尾url
+    ${url1}    catenate    SEPARATOR=    ${api}    ${获取指定课程信息api}
+    ${url2}    catenate    SEPARATOR=    ${url1}    /:
+    ${url3}    catenate    SEPARATOR=    ${url2}    ${bookingId}
+    set global variable    ${url}    ${url3}
+    Log    ${url}

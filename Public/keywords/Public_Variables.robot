@@ -5,12 +5,13 @@ Resource          ../Params/params.robot
 Resource          ../Variables/page_variables.robot
 Resource          ../Variables/URL.robot
 Library           requests
+Library           DateTime
+Library           TestRF
 
 *** Keywords ***
 Postapi
     [Arguments]    ${account}    ${accountvalue}    ${password}    ${passwordvalue}    ${教师登录api}    ${Tokenkey}=None
     ...    ${Tokenvalue}=None
-    Create Session    api    http://api.uskid.tech
     &{params}    Create Dictionary    ${account}=${accountvalue}    ${password}=${passwordvalue}    ${Tokenkey}=${Tokenvalue}
     &{headers}=    Create Dictionary    Content-Type=application/json
     comment    application/x-www-form-urlencoded
@@ -28,6 +29,7 @@ Token
     [Return]    ${Tokenvalue}
 
 Getapi
+    [Arguments]    ${api}    ${paramkey1}    ${paramvalue1}    ${paramkey2}=None    ${paramvalue2}=None
     url    ${获取近30天课程信息api}    ${paramkey1}    ${paramvalue1}    ${Tokenkey}    ${Tokenvalue}
     ${aaa}    RequestsLibrary.Get Request    api    ${url}
     Log    ${aaa.content}
@@ -35,5 +37,26 @@ Getapi
     [Return]    ${getresp}
 
 Delapi
-    requestsLibrary.Delete    api    ${教师添加预约api}
-    Log    删除预约成功
+    [Arguments]    ${开课id}    ${开课idvalue}    ${Tokenkey}    ${Tokenvalue}    ${教师添加预约api}
+    &{params}    Create Dictionary    ${开课id}=${开课idvalue}    ${Tokenkey}=${Tokenvalue}
+    &{headers}=    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    ${re}=    Delete Request    api    ${教师添加预约api}    data=${params}    headers=${headers}
+    Log    ${re.content}
+    set global variable    ${resp}    ${re.content}
+    [Return]    ${resp}
+
+Now
+    ${a}    mytime
+    Log    ${a}
+
+Putapi
+    &{params}    Create Dictionary    ${nicknamekey}=${nicknamevalue}    ${messageSettingkey}=${messageSettingvalue}    ${contactPhonekey}=${contactPhonevalue}    ${contactEmailkey}=${contactEmailvalue}    ${expressAddresskey}=${expressAddressvalue}
+    ...    ${sparePhonekey}=${sparePhonevalue}     ${usingPhonekey}=${usingPhonevalue}    ${addresskey}=${addressvalue}    ${zipCodekey}=${zipCodevalue}    ${Tokenkey}=${Tokenvalue}
+    &{headers}=    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    ${re}=    Put Request    api    ${教师添加预约api}    data=${params}    headers=${headers}
+    Log    ${re.content}
+    set global variable    ${resp}    ${re.content}
+    [Return]    ${resp}
+
+Session
+    Create Session    api    ${backend_URI}

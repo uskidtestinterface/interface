@@ -16,3 +16,5 @@ ${url}            ${EMPTY}
 ${paramkey2}      ${EMPTY}
 ${paramvalue2}    ${EMPTY}
 ${getresp}        ${EMPTY}
+${开课id}           id
+${开课idvalue}      12239

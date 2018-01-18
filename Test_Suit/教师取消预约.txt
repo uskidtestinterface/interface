@@ -1,0 +1,6 @@
+*** Settings ***
+Resource          ../Public/keywords/Public_Variables.robot
+Resource          ../Public/Params/params.robot
+Resource          ../Public/Variables/page_variables.robot
+
+*** Test Cases ***

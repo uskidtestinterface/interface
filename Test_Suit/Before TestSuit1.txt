@@ -15,9 +15,25 @@ Resource          ../Public/keywords/Public_Variables.robot
 
 *** Test Cases ***
 Before
+    Session
     Postapi    ${account}    ${accountvalue}    ${password}    ${passwordvalue}    ${教师登录api}
     Token
 
 教师添加预约
     Postapi    ${startTime}    ${startTimevalue}    ${oneDay}    ${oneDayvalue}    ${教师添加预约api}    ${Tokenkey}
     ...    ${Tokenvalue}
+
+test
+    Now
+
+教师取消预约
+    Delapi    ${开课id}    ${开课idvalue}    ${Tokenkey}    ${Tokenvalue}    ${教师添加预约api}
+
+获取近30天课程信息
+    Getapi    ${获取近30天课程信息api}    ${开课id}    ${开课idvalue}
+
+获取教师预约课数
+    [Documentation]    id指teachertimeslot表的teacherid
+    三段式url
+
+获取指定课程信息

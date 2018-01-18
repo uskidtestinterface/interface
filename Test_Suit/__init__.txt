@@ -1,0 +1,15 @@
+*** Settings ***
+Library           requests
+Library           json
+Library           RequestsLibrary
+Library           Collections
+Library           urllib2
+Library           String
+Library           Selenium2Library
+Library           HttpLibrary.HTTP
+Library           RequestsLibrary
+Resource          ../Public/ConnectDatabase/ConnectDatabase.robot
+Resource          ../Public/keywords/Public_Variables.robot
+Resource          ../Public/Params/params.robot
+Resource          ../Public/Variables/page_variables.robot
+Resource          ../Public/Variables/URL.robot
