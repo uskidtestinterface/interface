@@ -9,3 +9,4 @@ ${获取指定课程信息api}    /teacher/lessons
 ${获取教师预约课数_end}    /lesson_status
 ${url}            ${EMPTY}
 ${更新学生端家长信息api}    /parent/info
+${获取教师信息api}      /teacher/info

@@ -37,3 +37,6 @@ test
     三段式url
 
 获取指定课程信息
+
+获取教师信息
+    Getapi    ${教师id}    ${教师idvalue}    ${获取教师信息api}    ${Tokenkey}    ${Tokenkeyvalue}

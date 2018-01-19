@@ -18,3 +18,5 @@ ${paramvalue2}    ${EMPTY}
 ${getresp}        ${EMPTY}
 ${开课id}           id
 ${开课idvalue}      12239
+${教师id}           id
+${教师idvalue}      19
